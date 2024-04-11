@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+    <link href="/css/main.css" rel="stylesheet" />
+  </head>
+  <body>
+    <%- include('partials/navbar', {page: '/register'}) %>
+
+    <div class="container mx-auto p-4">
+      <div class="hero bg-base-200 rounded-lg p-4">
+        <div class="hero-content flex-col lg:flex-row">
+          <div>
+            <h1 class="text-5xl font-bold text-center">Register</h1>
+            <p class="py-6">
+              Provide your username, email and password to register.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <% if (typeof successMessage !== 'undefined') { %>
+    <div class="alert">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="stroke-current shrink-0 h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+        />
+      </svg>
+      <span><%= successMessage %></span>
+    </div>
+    <br />
+    <a href="/login" class="btn btn-success"> Proceed to Log in </a>
+
+    <% } else { %>
+
+    <form action="/register" method="POST" class="container p-4 mx-auto w-full">
+      <div class="w-full grid grid-cols-1 gap-6">
+        <div>
+          <label for="username" class="font-bold mb-2">Username</label>
+          <input
+            value="<% if (typeof userName !== 'undefined') { %><%= userName %><% } %>"
+            type="text"
+            name="userName"
+            id="userName"
+            placeholder="Username"
+            required
+            class="input w-full border border-gray-300 rounded-md px-3 py-2 focus:border-blue-300"
+          />
+        </div>
+        <div>
+          <label class="font-bold mb-2" for="password">Password</label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Password"
+            required
+            class="input w-full border border-gray-300 rounded-md px-3 py-2 focus:border-blue-300"
+          />
+        </div>
+        <div>
+          <label class="font-bold mb-2" for="password2">Confirm Password</label>
+          <input
+            type="password"
+            name="password2"
+            id="password2"
+            placeholder="Password"
+            required
+            class="input w-full border border-gray-300 rounded-md px-3 py-2 focus:border-blue-300"
+          />
+        </div>
+        <div>
+          <label class="font-bold mb-2" for="email">Email</label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Email Address"
+            required
+            class="input w-full border border-gray-300 rounded-md px-3 py-2 focus:border-blue-300"
+          />
+        </div>
+        <button type="submit" class="btn btn-primary mt-6 font-bold w-full">
+          Login
+        </button>
+      </div>
+    </form>
+
+    <% if (typeof errorMessage !== 'undefined') { %>
+    <div class="container mx-auto py-4 px-4">
+      <div class="alert alert-error text-white">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="stroke-current shrink-0 h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+          />
+        </svg>
+        <span><%= errorMessage %></span>
+      </div>
+    </div>
+    <% } %> <% } %>
+  </body>
+</html>

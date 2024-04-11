@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer components {
+
+    .small-card-container {
+        @apply w-[150px] h-[80px] shadow-2xl bg-white rounded-lg flex justify-center items-center;
+    }
+    
+    .btn-primary {
+        @apply py-2 px-4 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75;
+    }
+}     

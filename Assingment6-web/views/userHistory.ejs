@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Login History</title>
+    <link href="/css/main.css" rel="stylesheet" />
+  </head>
+  <body>
+    <%- include('partials/navbar', {page: '/userHistory'}) %>
+
+    <div class="container mx-auto p-4">
+      <div class="hero bg-base-200 rounded-lg p-4">
+        <div class="hero-content flex-col lg:flex-row">
+          <div>
+            <h1 class="text-5xl font-bold text-center">
+              User Login History
+            </h1>
+            <p class="py-6">Here you can see your login history and devices. 
+              | Username: <%= session.user.userName %>
+              | Email: <%= session.user.email %> </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container mx-auto p-4">
+      <table class="w-full table table-zebra">
+        <thead>
+          <tr>
+            <th>Login Date/Time</th>
+            <th>Client Information</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for (let item of session.user.loginHistory) { %>
+          <tr>
+            <td><%= item.dateTime %></td>
+            <td><%= item.userAgent %></td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

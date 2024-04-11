@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UN Countries | Add a country</title>
+    <link href="/css/main.css" rel="stylesheet" />
+  </head>
+  <body>
+    <%- include('partials/navbar', {page: '/un/addCountry'}) %>
+
+    <div class="container mx-auto p-4">
+      <div class="hero bg-base-200 rounded-lg p-4">
+        <div class="hero-content flex-col lg:flex-row">
+          <div>
+            <h1 class="text-5xl font-bold text-center">Add a Country</h1>
+            <p class="py-6">
+              Here you can add a new country to UN countries list.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <form
+      action="/un/addCountry"
+      method="POST"
+      class="container p-4 mx-auto w-full"
+    >
+      <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div>
+          <label for="name" class="font-bold mb-2">Country Name</label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Name"
+            required
+            class="input w-full border border-gray-300 rounded-md px-3 py-2 focus:border-blue-300"
+          />
+        </div>
+        <div>
+          <label class="font-bold mb-2" for="official">Official Name</label>
+          <input
+            type="text"
+            name="official"
+            id="official"
+            placeholder="Official Name"
+            required
+            class="input w-full border border-gray-300 rounded-md px-3 py-2 focus:border-blue-300"
+          />
+        </div>
+        <div>
+          <label class="font-bold mb-2" for="nativeName">Native Name</label>
+          <input
+            type="text"
+            name="nativeName"
+            id="nativeName"
+            placeholder="Native Name"
+            required
+            class="input w-full border border-gray-300 rounded-md px-3 py-2 focus:border-blue-300"
+          />
+        </div>
+        <div>
+          <label class="font-bold mb-2" for="regionId">Region ID</label>
+          <select
+            name="regionId"
+            id="regionId"
+            required
+            class="w-full border border-gray-300 rounded-md px-3 py-2 focus:border-blue-300 h-12"
+          >
+            <% regions.forEach(region=>{ %>
+            <option value="<%= region.id %>"><%= region.name %></option>
+            <% }) %>
+          </select>
+        </div>
+        <div>
+          <label class="font-bold mb-2" for="a2code">Alpha 2 Code</label>
+          <input
+            type="text"
+            name="a2code"
+            id="a2code"
+            placeholder="Alpha 2 Code"
+            required
+            class="input w-full border border-gray-300 rounded-md px-3 py-2 focus:border-blue-300"
+          />
+        </div>
+        <div>
+          <label class="font-bold mb-2" for="capital">Capital City</label>
+          <input
+            type="text"
+            name="capital"
+            id="capital"
+            placeholder="Capital"
+            required
+            class="input w-full border border-gray-300 rounded-md px-3 py-2 focus:border-blue-300"
+          />
+        </div>
+        <div>
+          <label class="font-bold mb-2" for="population">Population</label>
+          <input
+            type="number"
+            name="population"
+            id="population"
+            placeholder="Population"
+            required
+            class="input w-full border border-gray-300 rounded-md px-3 py-2 focus:border-blue-300"
+          />
+        </div>
+        <div>
+          <label class="font-bold mb-2" for="languages">Languages</label>
+          <input
+            type="text"
+            name="languages"
+            id="languages"
+            placeholder="Languages"
+            required
+            class="input w-full border border-gray-300 rounded-md px-3 py-2 focus:border-blue-300"
+          />
+        </div>
+        <div>
+          <label class="font-bold mb-2" for="wikipediaURL">Wikipedia URL</label>
+          <input
+            type="url"
+            name="wikipediaURL"
+            id="wikipediaURL"
+            placeholder="Wikipedia URL"
+            required
+            class="input w-full border border-gray-300 rounded-md px-3 py-2 focus:border-blue-300"
+          />
+        </div>
+        <div>
+          <label class="font-bold mb-2" for="flag">Flag URL</label>
+          <input
+            type="url"
+            name="flag"
+            id="flag"
+            placeholder="Flag Image URL"
+            required
+            class="input w-full border border-gray-300 rounded-md px-3 py-2 focus:border-blue-300"
+          />
+        </div>
+      </div>
+      <div class="mt-6">
+        <input
+          type="checkbox"
+          name="permanentUNSC"
+          id="permanentUNSC"
+          placeholder="permanentUNSC"
+        />
+        <label class="font-bold mb-2" for="permanentUNSC"
+          >Is Permanent UNSC Member?</label
+        >
+      </div>
+      <button type="submit" class="btn btn-primary mt-6 font-bold w-full">
+        + Add Country
+      </button>
+    </form>
+  </body>
+</html>
